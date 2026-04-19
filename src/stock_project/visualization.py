@@ -12,4 +12,16 @@ def plot_stock(df):
     plt.ylabel("Price")
     plt.legend()
     plt.show()
-    
+
+def plot_volatility(df):
+    import matplotlib.pyplot as plt
+
+    plt.figure(figsize=(10,5))
+    plt.plot(df.index, df["Volatility_20"], label="Volatility (20d)")
+
+    plt.title("NVDA Volatility")
+    plt.xlabel("Date")
+    plt.ylabel("Volatility")
+    plt.legend()
+
+    plt.show()
