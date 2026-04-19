@@ -3,7 +3,7 @@ import pandas as pd
 
 def get_stock_data(ticker: str) -> pd.DataFrame:
     try:
-        data = yf.download(ticker, period="1mo")
+        data = yf.download(ticker, period="5y")
 
         if data.empty:
             raise ValueError("Invalid ticker or no data found")
