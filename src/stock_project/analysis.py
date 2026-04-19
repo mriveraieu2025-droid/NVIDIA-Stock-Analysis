@@ -16,3 +16,11 @@ def add_daily_return(df: pd.DataFrame) -> pd.DataFrame:
 def add_volatility(df: pd.DataFrame, window: int = 20) -> pd.DataFrame:
     df[f"Volatility_{window}"] = df["Daily_Return"].rolling(window=window).std()
     return df
+
+def add_signal(df: pd.DataFrame) -> pd.DataFrame:
+    df["Signal"] = 0
+
+    df.loc[df["Close"] > df["MA_20"], "Signal"] = 1
+    df.loc[df["Close"] < df["MA_20"], "Signal"] = -1
+
+    return df
