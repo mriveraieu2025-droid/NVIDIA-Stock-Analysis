@@ -1,1 +1,9 @@
+name: nvidia-stock-analysis
 
+dependencies:
+  - python=3.12
+  - pip
+  - pandas
+  - numpy
+  - matplotlib
+  - yfinance
