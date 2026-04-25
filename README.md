@@ -2,21 +2,21 @@
 
 This project analyzes NVIDIA (NVDA) stock using Python.
 
-## 📊 Project Overview
+## Project Overview
 The goal of this project is to explore NVIDIA’s stock behavior, focusing on:
 - The impact of the AI boom
 - Stock volatility (risk)
 - Trend modeling using linear regression
 - Future prediction with uncertainty
 
-## 🔧 Technologies Used
+## Technologies Used
 - Python
 - pandas
 - numpy
 - matplotlib
 - yfinance
 
-## 📈 Features
+## Features
 - Data collection using Yahoo Finance
 - Moving averages and volatility analysis
 - AI impact visualization
@@ -24,7 +24,7 @@ The goal of this project is to explore NVIDIA’s stock behavior, focusing on:
 - Error evaluation (MAPE)
 - Future projection with uncertainty range
 
-## ▶️ How to Run
+## How to Run
 
 1. Install dependencies:
 ```bash
