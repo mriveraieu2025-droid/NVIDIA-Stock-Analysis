@@ -1,87 +1,47 @@
 from stock_project.data import get_stock_data
+from stock_project.analysis import (
+    add_moving_average,
+    add_daily_return,
+    add_volatility,
+    add_cumulative_return,
+    add_ai_growth_proxy
+)
+from stock_project.visualization import (
+    plot_volatility,
+    plot_ai_shock,
+    plot_prediction,
+    calculate_error,
+    plot_prediction_with_error
+)
+
 
 def main():
-    print("Running NVDA analysis...")
-    data = get_stock_data("NVDA")
+    print("Running NVIDIA analysis...")
 
-    if data is not None:
-        print(data.head())
+    df = get_stock_data("NVDA")
+
+    if df is not None:
+        # 📊 Data processing
+        df = add_moving_average(df, 20)
+        df = add_daily_return(df)
+        df = add_volatility(df, 20)
+        df = add_cumulative_return(df)
+        df = add_ai_growth_proxy(df)
+
+        # 📈 ONLY the graphs you present
+        plot_ai_shock(df)
+        plot_volatility(df)
+        plot_prediction(df)
+
+        # 📊 Error calculation
+        error = calculate_error(df)
+
+        # 🔥 Final graph: prediction + uncertainty
+        plot_prediction_with_error(df, error)
+
     else:
         print("No data returned.")
 
-if __name__ == "__main__":
-    main()
-
-from stock_project.data import get_stock_data
-from stock_project.analysis import add_moving_average
-
-def main():
-    print("Running NVDA analysis...")
-    
-    data = get_stock_data("NVDA")
-
-    if data is not None:
-        data = add_moving_average(data, window=5)
-        print(data.head())
-    else:
-        print("No data returned.")
 
 if __name__ == "__main__":
     main()
-
-from stock_project.data import get_stock_data
-from stock_project.analysis import add_moving_average
-from stock_project.visualization import plot_stock
-
-def main():
-    print("Running NVDA analysis...")
-
-    data = get_stock_data("NVDA")
-
-    if data is not None:
-        data = add_moving_average(data, window=20)
-
-        print(data.head())
-        print(data.shape)
-        print(data.index.min())
-        print(data.index.max())
-
-        plot_stock(data)
-    else:
-        print("No data returned.")
-
-if __name__ == "__main__":
-    main()
-
-from stock_project.data import get_stock_data
-from stock_project.analysis import add_moving_average, add_daily_return
-from stock_project.visualization import plot_stock
-
-def main():
-    print("Running NVDA analysis...")
-
-    data = get_stock_data("NVDA")
-
-    if data is not None:
-        data = add_moving_average(data, window=20)
-        data = add_daily_return(data)
-
-        print(data.head())
-        print(data.shape)
-        print(data.index.min())
-        print(data.index.max())
-
-        plot_stock(data)
-    else:
-        print("No data returned.")
-
-if __name__ == "__main__":
-    main()
-
-from stock_project.analysis import add_moving_average, add_daily_return, add_volatility
-data = add_moving_average(data, window=20)
-data = add_daily_return(data)
-data = add_volatility(data, window=20)
-
-plot_volatility(data)
-
