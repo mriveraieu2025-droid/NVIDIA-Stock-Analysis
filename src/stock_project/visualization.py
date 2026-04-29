@@ -81,7 +81,7 @@ def plot_prediction(df):
     if isinstance(prices, pd.DataFrame):
         prices = prices.iloc[:, 0]
 
-    prices = prices.to_numpy().astype(float)
+    prices = prices.to_numpy().astype(float).flatten()
 
     # Split data into training (80%) and testing (20%)
     split = int(len(prices) * 0.8)
