@@ -2,7 +2,7 @@ import yfinance as yf
 import pandas as pd
 
 def get_stock_data(ticker: str, period: str = "5y") -> pd.DataFrame:
-    # Download historical stock data from Yahoo Finance
+    # Download historical stock data from yfinance
     try:
         df = yf.download(ticker, period=period)
 

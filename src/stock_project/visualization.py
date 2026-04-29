@@ -76,7 +76,12 @@ def plot_prediction(df):
     df["Date"] = pd.to_datetime(df["Date"])
 
     # Extract closing prices as a numeric array
-    prices = df["Close"].values
+    prices = df["Close"]
+
+    if isinstance(prices, pd.DataFrame):
+        prices = prices.iloc[:, 0]
+
+    prices = prices.to_numpy().astype(float)
 
     # Split data into training (80%) and testing (20%)
     split = int(len(prices) * 0.8)
@@ -106,7 +111,6 @@ def plot_prediction(df):
     plt.axvline(df["Date"].iloc[split],
                 linestyle=":", color="black", label="Train/Test Split")
 
-    # Chart formatting
     plt.title("Actual vs Predicted NVIDIA Stock Price", fontsize=14)
     plt.xlabel("Date")
     plt.ylabel("Price (USD)")
@@ -122,8 +126,13 @@ def calculate_error(df):
     df = df.copy()
     df["Date"] = pd.to_datetime(df["Date"])
 
-    # Extract closing prices as numeric array
-    prices = df["Close"].values
+    # Extract closing prices as a numeric array
+    prices = df["Close"]
+
+    if isinstance(prices, pd.DataFrame):
+        prices = prices.iloc[:, 0]
+
+    prices = prices.to_numpy().astype(float)
 
     # Split data into training (80%) and testing (20%)
     split = int(len(prices) * 0.8)
@@ -153,8 +162,13 @@ def plot_prediction_with_error(df, error):
     df = df.copy()
     df["Date"] = pd.to_datetime(df["Date"])
 
-    # Extract closing prices as numeric array
-    prices = df["Close"].values
+    # Extract closing prices as a numeric array
+    prices = df["Close"]
+
+    if isinstance(prices, pd.DataFrame):
+        prices = prices.iloc[:, 0]
+
+    prices = prices.to_numpy().astype(float)
 
     # Fit linear regression model on all data
     x = np.arange(len(prices))
@@ -191,7 +205,6 @@ def plot_prediction_with_error(df, error):
     plt.fill_between(future_dates, lower, upper,
                      color="red", alpha=0.2, label="Prediction Range")
 
-    # Chart formatting
     plt.title("NVIDIA Future Prediction with Uncertainty", fontsize=14)
     plt.xlabel("Date")
     plt.ylabel("Price (USD)")
