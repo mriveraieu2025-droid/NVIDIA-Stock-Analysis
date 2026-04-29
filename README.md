@@ -24,8 +24,16 @@ The goal of this project is to explore NVIDIA’s stock behavior, focusing on:
 - Error evaluation (MAPE)
 - Future projection with uncertainty range
 
-## How to Run
+## How to Run the Project
 
-1. Install dependencies:
+1. Clone the repository:
 ```bash
-pip install -r requirements.txt
+git clone https://github.com/mriveraieu2025-droid/NVIDIA-Stock-Analysis.git
+cd NVIDIA-Stock-Analysis/src
+
+2. Install dependecies: 
+py -m pip install pandas numpy matplotlib yfinance
+
+3. run the project: 
+py -m stock_project.main
+
